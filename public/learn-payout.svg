@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F093FB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F5576C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6B6B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#bg2)" rx="0"/>
+  <!-- Globe / world icon -->
+  <g transform="translate(270, 30)" opacity="0.2">
+    <circle cx="50" cy="50" r="50" fill="none" stroke="#fff" stroke-width="3"/>
+    <ellipse cx="50" cy="50" rx="22" ry="50" fill="none" stroke="#fff" stroke-width="2.5"/>
+    <line x1="0" y1="50" x2="100" y2="50" stroke="#fff" stroke-width="2"/>
+    <line x1="50" y1="0" x2="50" y2="100" stroke="#fff" stroke-width="2" opacity="0.5"/>
+  </g>
+  <!-- Currency symbols floating -->
+  <g opacity="0.12">
+    <text x="40" y="50" font-family="Arial" font-size="28" fill="#fff" font-weight="700">$</text>
+    <text x="120" y="80" font-family="Arial" font-size="22" fill="#fff" font-weight="700">€</text>
+    <text x="80" y="150" font-family="Arial" font-size="20" fill="#fff" font-weight="700">¥</text>
+    <text x="180" y="45" font-family="Arial" font-size="18" fill="#fff" font-weight="700">£</text>
+  </g>
+  <!-- Decorative circles -->
+  <circle cx="340" cy="170" r="25" fill="#fff" opacity="0.08"/>
+  <circle cx="50" cy="120" r="40" fill="#fff" opacity="0.06"/>
+  <circle cx="200" cy="180" r="15" fill="#fff" opacity="0.1"/>
+  <!-- Arrow suggesting transfer -->
+  <g transform="translate(130, 100)" opacity="0.15">
+    <line x1="0" y1="15" x2="60" y2="15" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+    <polyline points="48,5 60,15 48,25" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

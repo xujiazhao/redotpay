@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="96" fill="#E8192C"/>
+  <g fill="#FFFFFF">
+    <!-- P shape outer -->
+    <path d="M160 120 h120 a108 108 0 0 1 0 216 H220 V440 h-60 V120z M220 276 h56 a52 52 0 0 0 0-104 H220 z"/>
+    <!-- Dot inside P -->
+    <circle cx="276" cy="224" r="28" fill="#E8192C"/>
+  </g>
+</svg>

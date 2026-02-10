@@ -1,0 +1,30 @@
+.rolling-number {
+  display: inline-flex;
+}
+
+.roll-static {
+  display: inline-block;
+  line-height: 1;
+}
+
+.roll-col-wrap {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.roll-col {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.roll-cell {
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}

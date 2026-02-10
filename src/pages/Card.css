@@ -1,0 +1,206 @@
+﻿.card-page {
+  min-height: 100%;
+}
+
+.card-header {
+  background: #EB0028;
+  padding: 54px 16px 80px;
+  border-radius: 0 0 28px 28px;
+  position: relative;
+}
+
+.card-header::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -20px;
+  width: 160px;
+  height: 160px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+.card-page-title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.card-page-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+/* ===== Virtual Card ===== */
+.virtual-card-wrapper {
+  padding: 0 16px;
+  margin-top: -50px;
+  margin-bottom: 20px;
+}
+
+.virtual-card {
+  background: #1A1A2E;
+  border-radius: 20px;
+  padding: 24px;
+  color: #fff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.virtual-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  background: rgba(235, 0, 40, 0.15);
+  border-radius: 50%;
+}
+
+.virtual-card::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 150px;
+  height: 150px;
+  background: rgba(235, 0, 40, 0.08);
+  border-radius: 50%;
+}
+
+.vc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.vc-logo {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.vc-type {
+  font-size: 20px;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+
+.vc-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.chip-icon {
+  font-size: 28px;
+  color: #FFD700;
+}
+
+.contactless {
+  font-size: 16px;
+  opacity: 0.5;
+  transform: rotate(90deg);
+}
+
+.vc-number {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.vc-bottom {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.vc-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+.vc-value {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* ===== Card Actions ===== */
+.card-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 0 16px;
+  margin-bottom: 12px;
+}
+
+.card-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 8px;
+  background: var(--bg-white);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.ca-icon {
+  font-size: 22px;
+}
+
+.ca-text {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ===== Card Info ===== */
+.card-info .info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-info .info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.info-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.status-active {
+  color: #16A34A;
+}

@@ -1,0 +1,102 @@
+﻿.splash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: all;
+  background: #FFFFFF;
+}
+
+/* ===== Brand Area (Logo + Text) ===== */
+.splash-brand-area {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.splash-logo {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(235, 0, 40, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #EB0028;
+  box-shadow: 0 4px 24px rgba(235, 0, 40, 0.25), inset 0 0 0 2px #EB0028;
+}
+
+.splash-logo img {
+  width: 75%;
+  height: 75%;
+  object-fit: cover;
+  display: block;
+}
+
+.splash-brand-text {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1A1A2E;
+  letter-spacing: -0.5px;
+}
+
+.splash-tagline {
+  font-size: 13px;
+  color: #9CA3AF;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* ===== Red Dot ===== */
+.splash-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: #EB0028;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  will-change: transform;
+  z-index: 3;
+}
+
+/* ===== Phase: fadelogo â€” fade out logo & text ===== */
+.splash.fadelogo .splash-brand-area {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+/* ===== Phase: expand â€” red dot fills screen ===== */
+.splash.expand .splash-brand-area {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.splash.expand .splash-dot {
+  transform: translate(-50%, -50%) scale(120);
+  transition: transform 0.45s cubic-bezier(0.22, 0.68, 0.35, 1.0);
+}
+
+/* ===== Phase: reveal â€” red fades out, show home ===== */
+.splash.reveal {
+  opacity: 0;
+  transition: opacity 0.35s ease-in;
+}
+
+.splash.reveal .splash-dot {
+  transform: translate(-50%, -50%) scale(120);
+}
