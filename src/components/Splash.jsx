@@ -28,7 +28,7 @@ function Splash({ onFinish }) {
       {/* Logo + brand text — shown first */}
       <div className="splash-brand-area">
         <div className="splash-logo">
-          <img src="/logo.svg" alt="RedotPay" />
+          <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="RedotPay" />
         </div>
         <div className="splash-brand-text">RedotPay</div>
         <div className="splash-tagline">Web3 Payment, Simplified</div>
