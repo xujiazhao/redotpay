@@ -142,3 +142,7 @@
   font-size: 20px;
   color: var(--text-light);
 }
+
+.userinfo-logout-wrap {
+  padding: 24px 16px;
+}

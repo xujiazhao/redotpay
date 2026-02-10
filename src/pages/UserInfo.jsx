@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { PiArrowLeft, PiShieldCheck, PiCreditCard, PiUsers, PiShareNetwork, PiInfo, PiCaretRight } from 'react-icons/pi'
-import StatusBar from '../components/StatusBar'
-import './UserInfo.css'
+import StatusBar from './StatusBar'
+import '../styles/UserInfo.css'
 
 function UserInfo({ onClose }) {
   const pageRef = useRef(null)
@@ -31,9 +31,9 @@ function UserInfo({ onClose }) {
       </div>
 
       <div className="userinfo-card">
-        <div className="userinfo-avatar">R</div>
-        <div className="userinfo-name">Rick Chen</div>
-        <div className="userinfo-email">rick.chen@email.com</div>
+        <div className="userinfo-avatar">J</div>
+        <div className="userinfo-name">Jiazhao Xu</div>
+        <div className="userinfo-email">hi@xux.com</div>
         <div className="userinfo-uid">UID: 82910374</div>
       </div>
 
@@ -45,6 +45,10 @@ function UserInfo({ onClose }) {
             <PiCaretRight className="userinfo-menu-arrow" />
           </div>
         ))}
+      </div>
+
+      <div className="userinfo-logout-wrap">
+        <button className="btn-outline" onClick={handleBack}>Log Out</button>
       </div>
     </div>
   )

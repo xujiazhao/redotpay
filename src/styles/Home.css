@@ -105,10 +105,24 @@
 
 .currency-swap-icon {
   font-size: 14px;
-  color: var(--text-primary);
+  color: var(--red-primary);
 }
 
 /* ===== Currency Sheet ===== */
+.home-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.home-view-all {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
 .sheet-list {
   display: flex;
   flex-direction: column;
@@ -142,6 +156,25 @@
 .sheet-item-symbol {
   font-size: 14px;
   color: var(--text-light);
+}
+
+.sheet-see-all-btn {
+  width: 100%;
+  margin: 4px 0 0;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 12px;
+  background: #F0F0F2;
+  color: var(--text-primary);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.sheet-see-all-btn:active {
+  background: #E4E4E7;
 }
 
 .balance-change {

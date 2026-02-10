@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { PiShoppingCart, PiCurrencyDollarSimple, PiFilmSlate, PiArrowsLeftRight, PiArrowUpRight, PiMusicNote, PiMagnifyingGlass, PiCurrencyBtc, PiAppleLogo } from 'react-icons/pi'
-import './History.css'
+import '../styles/History.css'
 
 function History() {
   const [activeFilter, setActiveFilter] = useState('all')
@@ -30,55 +30,66 @@ function History() {
     ? transactions
     : transactions.filter(tx => tx.type === activeFilter)
 
+  // Group by date
+  const grouped = filtered.reduce((acc, tx) => {
+    const date = tx.time.split(' ')[0]
+    if (!acc[date]) acc[date] = []
+    acc[date].push(tx)
+    return acc
+  }, {})
+
+  const formatDate = (dateStr) => {
+    const d = new Date(dateStr)
+    const today = new Date('2026-02-11')
+    const yesterday = new Date('2026-02-10')
+    if (dateStr === today.toISOString().split('T')[0]) return 'Today'
+    if (dateStr === yesterday.toISOString().split('T')[0]) return 'Yesterday'
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  }
+
   return (
     <div className="history-page">
       <div className="history-header">
-        <h2 className="history-title">Transactions</h2>
-        <button className="icon-btn-small"><PiMagnifyingGlass /></button>
-      </div>
-
-      {/* Summary Cards */}
-      <div className="summary-row">
-        <div className="summary-card income">
-          <div className="summary-label">Income This Month</div>
-          <div className="summary-amount">+$4,000.00</div>
+        <div className="history-header-top">
+          <h2 className="history-title">Activity</h2>
+          <button className="icon-btn-small"><PiMagnifyingGlass /></button>
         </div>
-        <div className="summary-card expense">
-          <div className="summary-label">Spent This Month</div>
-          <div className="summary-amount">-$703.48</div>
+        {/* Filters */}
+        <div className="filter-bar">
+          {filters.map(f => (
+            <button
+              key={f.key}
+              className={`filter-chip ${activeFilter === f.key ? 'active' : ''}`}
+              onClick={() => setActiveFilter(f.key)}
+            >
+              {f.label}
+            </button>
+          ))}
         </div>
-      </div>
-
-      {/* Filters */}
-      <div className="filter-bar">
-        {filters.map(f => (
-          <button
-            key={f.key}
-            className={`filter-chip ${activeFilter === f.key ? 'active' : ''}`}
-            onClick={() => setActiveFilter(f.key)}
-          >
-            {f.label}
-          </button>
-        ))}
       </div>
 
       {/* Transaction List */}
       <div className="history-list">
-        {filtered.map(tx => (
-          <div key={tx.id} className="history-item">
-            <div className="hi-icon">{tx.icon}</div>
-            <div className="hi-info">
-              <div className="hi-name">{tx.name}</div>
-              <div className="hi-time">{tx.time}</div>
-            </div>
-            <div className="hi-right">
-              <div className={`hi-amount ${tx.amount.startsWith('+') ? 'positive' : ''}`}>
-                {tx.amount}
+        {Object.entries(grouped).map(([date, txs]) => (
+          <div key={date} className="history-date-group">
+            <div className="history-date-label">{formatDate(date)}</div>
+            {txs.map(tx => (
+              <div key={tx.id} className="history-item">
+                <div className="hi-icon">{tx.icon}</div>
+                <div className="hi-info">
+                  <div className="hi-name">{tx.name}</div>
+                  <div className="hi-time">{tx.time.split(' ')[1]}</div>
+                </div>
+                <div className="hi-right">
+                  <div className={`hi-amount ${tx.amount.startsWith('+') ? 'positive' : ''}`}>
+                    {tx.amount}
+                  </div>
+                  <div className={`hi-status ${tx.status === 'Pending' ? 'pending' : ''}`}>
+                    {tx.status}
+                  </div>
+                </div>
               </div>
-              <div className={`hi-status ${tx.status === 'Pending' ? 'pending' : ''}`}>
-                {tx.status}
-              </div>
-            </div>
+            ))}
           </div>
         ))}
       </div>

@@ -1,0 +1,143 @@
+.asset-page {
+  min-height: 100%;
+  background: var(--bg-primary);
+}
+
+.asset-header {
+  padding: 54px 16px 16px;
+  background: var(--bg-white);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.asset-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ===== Portfolio Chart ===== */
+.asset-portfolio {
+  padding: 16px 16px 0;
+  overflow: hidden;
+}
+
+.asset-portfolio-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.asset-portfolio-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-top: 4px;
+}
+
+.asset-portfolio-change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #16A34A;
+}
+
+.asset-change-icon {
+  font-size: 14px;
+}
+
+.asset-change-pct {
+  opacity: 0.7;
+}
+
+.asset-change-period {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-light);
+  background: var(--bg-primary);
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+
+.asset-chart {
+  margin-top: 16px;
+  margin-left: -16px;
+  margin-right: -16px;
+  line-height: 0;
+  opacity: 0.8;
+}
+
+/* ===== Asset Grid ===== */
+.asset-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px;
+}
+
+.asset-card {
+  background: var(--bg-white);
+  border-radius: 16px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.asset-card:active {
+  transform: scale(0.97);
+}
+
+.asset-card-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 36px;
+  color: #E0E0E4;
+}
+
+.asset-card-symbol {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+
+.asset-card-name {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: -4px;
+}
+
+.asset-card-balance {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+
+/* ===== Add Asset Card ===== */
+.asset-card-add {
+  background: transparent;
+  border: 2px dashed #D1D5DB;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.asset-card-add:active {
+  border-color: var(--red-primary);
+}
+
+.asset-card-add .asset-card-symbol {
+  color: var(--text-light);
+}

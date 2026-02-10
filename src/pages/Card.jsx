@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
-import { PiEye, PiGear, PiShoppingCart, PiCurrencyDollarSimple, PiArrowUpRight, PiFilmSlate, PiWifiHigh, PiCopy, PiCheck, PiCaretRight } from 'react-icons/pi'
-import './Card.css'
+import { PiEye, PiGear, PiShoppingCart, PiCurrencyDollarSimple, PiArrowUpRight, PiFilmSlate, PiContactlessPayment, PiCopy, PiCheck, PiCaretRight } from 'react-icons/pi'
+import '../styles/Card.css'
 
 function Card() {
   const [showDetail, setShowDetail] = useState(false)
@@ -26,7 +26,7 @@ function Card() {
 
   const cardDetails = [
     { label: 'Card Number', value: '4392 8510 7764 8492', field: 'number' },
-    { label: 'Cardholder', value: 'JOHN DOE', field: 'holder' },
+    { label: 'Cardholder', value: 'JIAZHAO XU', field: 'holder' },
     { label: 'Expiry Date', value: '12/28', field: 'expiry' },
     { label: 'CVV', value: '••• ', field: 'cvv' },
     { label: 'Billing Address', value: '1 Infinite Loop, CA 95014', field: 'address' },
@@ -56,8 +56,8 @@ function Card() {
             <div className="vc-type">VISA</div>
           </div>
           <div className="vc-chip">
-            <div className="chip-icon">▣</div>
-            <div className="contactless"><PiWifiHigh /></div>
+            <img src={`${import.meta.env.BASE_URL}chip.png`} alt="chip" className="chip-icon" />
+            <div className="contactless"><PiContactlessPayment /></div>
           </div>
           <div className="vc-number">
             <span>****</span>
@@ -68,7 +68,7 @@ function Card() {
           <div className="vc-bottom">
             <div className="vc-holder">
               <div className="vc-label">CARDHOLDER</div>
-              <div className="vc-value">JOHN DOE</div>
+              <div className="vc-value">JIAZHAO XU</div>
             </div>
             <div className="vc-expiry">
               <div className="vc-label">EXPIRES</div>

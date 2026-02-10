@@ -1,20 +1,26 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
+import { useNavigate } from 'react-router-dom'
 import { PiPlusLight, PiCurrencyCircleDollarLight, PiDiamondLight, PiDotsThreeLight, PiBellSimple, PiShoppingCart, PiCurrencyDollarSimple, PiFilmSlate, PiArrowsLeftRight, PiArrowsClockwiseBold } from 'react-icons/pi'
-import RollingNumber from '../components/RollingNumber'
+import RollingNumber from './RollingNumber'
 import useDragScroll from '../hooks/useDragScroll'
 import UserInfo from './UserInfo'
-import './Home.css'
+import '../styles/Home.css'
 
 const currencies = [
   { code: 'USD', symbol: '$', rate: 1 },
   { code: 'JPY', symbol: '¥', rate: 149.50 },
   { code: 'HKD', symbol: 'HK$', rate: 7.82 },
+  { code: 'USDT', symbol: '₮', rate: 1 },
+  { code: 'USDC', symbol: '$', rate: 1 },
+  { code: 'ETH', symbol: 'Ξ', rate: 1 / 2618.18 },
+  { code: 'BTC', symbol: '₿', rate: 1 / 97256.87 },
 ]
 
-const baseAmount = 12580.42
+const totalUsdValue = 37949.65
 
 function Home() {
+  const navigate = useNavigate()
   const [currency, setCurrency] = useState(currencies[0])
   const [showCurrencySheet, setShowCurrencySheet] = useState(false)
   const [sheetClosing, setSheetClosing] = useState(false)
@@ -50,8 +56,8 @@ function Home() {
       <div className="home-header">
         <div className="header-top">
           <div className="logo-area" onClick={() => setShowUserInfo(true)} style={{ cursor: 'pointer' }}>
-            <div className="logo-circle">R</div>
-            <span className="logo-text">Rick Chen</span>
+            <div className="logo-circle">J</div>
+            <span className="logo-text">Jiazhao Xu</span>
           </div>
           <div className="header-actions">
             <button className="icon-btn"><PiBellSimple /></button>
@@ -63,7 +69,7 @@ function Home() {
       <div className="balance-section">
         <div className="balance-label">Est. Total Value</div>
         <div className="balance-row">
-          <div className="balance-amount"><RollingNumber value={(baseAmount * currency.rate).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} /></div>
+          <div className="balance-amount"><RollingNumber value={(totalUsdValue * currency.rate).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: currency.rate < 0.001 ? 6 : 2 })} /></div>
           <div className="balance-currency" onClick={() => setShowCurrencySheet(true)}>
             <span className="currency-code">{currency.code}</span>
             <PiArrowsClockwiseBold className="currency-swap-icon" />
@@ -89,6 +95,7 @@ function Home() {
                 </div>
               ))}
             </div>
+            <button className="sheet-see-all-btn" onClick={() => { closeCurrencySheet(); navigate('/asset') }}>See all assets</button>
           </div>
         </div>,
         document.getElementById('root')
@@ -107,9 +114,12 @@ function Home() {
       </div>
 
       {/* Transactions */}
-      <div className="section-title">Transactions</div>
+      <div className="home-section-header">
+        <span className="section-title" style={{ padding: 0 }}>Activity</span>
+        <span className="home-view-all" onClick={() => navigate('/activity')}>View all</span>
+      </div>
       <div className="transaction-list">
-        {transactions.map((tx) => (
+        {transactions.slice(0, 3).map((tx) => (
           <div key={tx.id} className="transaction-item card">
             <div className="tx-icon">{tx.icon}</div>
             <div className="tx-info">

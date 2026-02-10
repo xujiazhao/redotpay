@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './Splash.css'
+import '../styles/Splash.css'
 
 function Splash({ onFinish }) {
   const [phase, setPhase] = useState('show')  // show → fadelogo → expand → reveal

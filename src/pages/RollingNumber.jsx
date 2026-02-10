@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import './RollingNumber.css'
+import '../styles/RollingNumber.css'
 
 const CHARS = '0123456789'
 

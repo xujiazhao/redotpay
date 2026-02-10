@@ -1,0 +1,277 @@
+﻿/* ===== Pay Sheet (full overlay) ===== */
+.pay-sheet {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #EB0028 0%, #C7001F 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+/* ===== Header ===== */
+.pay-sheet-header {
+  width: 100%;
+  padding: 60px 16px 20px;
+  text-align: center;
+}
+
+.pay-sheet-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+/* ===== QR Code Area ===== */
+.pay-qr-area {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 0 0;
+  width: 100%;
+}
+
+.pay-qr-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 16px;
+  align-self: stretch;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.pay-qr-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ===== Ring burst animation ===== */
+.ring-hidden {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.ring-burst {
+  animation: ringBurst 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ringBurst {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pay-qr-center-target {
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.pay-qr-hint {
+  font-size: 13px;
+  font-weight: 400;
+  color: #9CA3AF;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* ===== Token Selector (divider style inside card) ===== */
+.pay-token-divider {
+  width: 100%;
+  height: 1px;
+  background: #F0F0F0;
+  margin: 0;
+}
+
+.pay-token-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0px 0px;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.pay-token-row:active {
+  opacity: 0.6;
+}
+
+.pay-token-icon {
+  width: 40px;
+  height: 40px;
+  background: #FFF1F2;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #EB0028;
+  flex-shrink: 0;
+}
+
+.pay-token-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1A2E;
+  flex: 1;
+}
+
+.pay-token-balance {
+  font-size: 13px;
+  color: #9CA3AF;
+}
+
+.pay-token-caret {
+  font-size: 18px;
+  color: #9CA3AF;
+  flex-shrink: 0;
+}
+
+/* ===== Token Bottom Sheet Items ===== */
+.pay-token-sheet-icon {
+  width: 40px;
+  height: 40px;
+  background: #F0F0F2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #6B7280;
+  flex-shrink: 0;
+}
+
+.pay-token-sheet-icon-active {
+  background: #FECDD3;
+  color: #EB0028;
+}
+
+.pay-token-sheet-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-radius: 12px;
+}
+
+.pay-token-sheet-item:active {
+  background: #F5F5F7;
+}
+
+.pay-token-sheet-active {
+  background: #FFF1F2;
+}
+
+.pay-token-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pay-token-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1A2E;
+}
+
+.pay-token-subname {
+  font-size: 12px;
+  color: #9CA3AF;
+}
+
+.pay-token-bal {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A1A2E;
+}
+
+.pay-token-check {
+  font-size: 20px;
+  color: #EB0028;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+.pay-token-check-empty {
+  font-size: 20px;
+  color: #D1D5DB;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+/* ===== Actions Card ===== */
+.pay-actions-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  margin: 16px 16px 0;
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.pay-action-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.pay-action-item:not(:last-child) {
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.pay-action-item:active {
+  background: #F5F5F7;
+}
+
+.pay-action-icon {
+  width: 40px;
+  height: 40px;
+  background: #FFF1F2;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #EB0028;
+  flex-shrink: 0;
+}
+
+.pay-action-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1A2E;
+  flex: 1;
+}
+
+.pay-action-caret {
+  font-size: 18px;
+  color: #9CA3AF;
+  flex-shrink: 0;
+}
