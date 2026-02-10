@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { PiPlusLight, PiCurrencyCircleDollarLight, PiDiamondLight, PiDotsThreeLight, PiBellSimple, PiShoppingCart, PiCurrencyDollarSimple, PiFilmSlate, PiArrowsLeftRight, PiArrowsClockwiseBold } from 'react-icons/pi'
 import RollingNumber from '../components/RollingNumber'
+import useDragScroll from '../hooks/useDragScroll'
 import UserInfo from './UserInfo'
 import './Home.css'
 
@@ -18,6 +19,8 @@ function Home() {
   const [showCurrencySheet, setShowCurrencySheet] = useState(false)
   const [sheetClosing, setSheetClosing] = useState(false)
   const [showUserInfo, setShowUserInfo] = useState(false)
+  const learnScrollRef = useDragScroll()
+  const exploreScrollRef = useDragScroll()
 
   const closeCurrencySheet = () => {
     setSheetClosing(true)
@@ -122,7 +125,7 @@ function Home() {
 
       {/* Learn */}
       <div className="section-title">Learn</div>
-      <div className="learn-scroll">
+      <div className="learn-scroll" ref={learnScrollRef}>
         <div className="learn-card">
           <img src={`${import.meta.env.BASE_URL}learn-identity.svg`} alt="" className="learn-card-img" />
           <div className="learn-card-text">How to complete account identity authentication</div>
@@ -135,7 +138,7 @@ function Home() {
 
       {/* Explore */}
       <div className="section-title">Explore</div>
-      <div className="explore-scroll">
+      <div className="explore-scroll" ref={exploreScrollRef}>
         <div className="explore-card">
           <img src={`${import.meta.env.BASE_URL}explore-solana.svg`} alt="" className="explore-card-img" />
           <div className="explore-card-body">

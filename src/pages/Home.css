@@ -109,68 +109,6 @@
 }
 
 /* ===== Currency Sheet ===== */
-.sheet-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 300;
-  display: flex;
-  align-items: flex-end;
-  animation: sheetFadeIn 0.2s ease forwards;
-}
-
-.sheet-overlay.sheet-closing {
-  animation: sheetFadeOut 0.25s ease forwards;
-}
-
-@keyframes sheetFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes sheetFadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-.sheet-container {
-  width: 100%;
-  background: white;
-  border-radius: 20px 20px 0 0;
-  padding: 12px 16px 48px;
-  animation: sheetSlideUp 0.3s ease forwards;
-}
-
-.sheet-container.sheet-closing {
-  animation: sheetSlideDown 0.25s ease forwards;
-}
-
-@keyframes sheetSlideUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
-}
-
-@keyframes sheetSlideDown {
-  from { transform: translateY(0); }
-  to { transform: translateY(100%); }
-}
-
-.sheet-handle {
-  width: 36px;
-  height: 4px;
-  background: #D1D5DB;
-  border-radius: 2px;
-  margin: 0 auto 16px;
-}
-
-.sheet-title {
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
 .sheet-list {
   display: flex;
   flex-direction: column;
@@ -332,6 +270,13 @@
   padding: 0 16px 16px;
   scroll-padding-left: 16px;
   scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.learn-scroll.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
 }
 
 .learn-scroll::-webkit-scrollbar {
@@ -372,6 +317,13 @@
   padding: 0 16px 24px;
   scroll-padding-left: 16px;
   scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.explore-scroll.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
 }
 
 .explore-scroll::-webkit-scrollbar {

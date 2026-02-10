@@ -5,7 +5,6 @@
 .card-header {
   background: #EB0028;
   padding: 54px 16px 80px;
-  border-radius: 0 0 28px 28px;
   position: relative;
 }
 
@@ -44,7 +43,7 @@
   border-radius: 20px;
   padding: 24px;
   color: #fff;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -147,34 +146,37 @@
 }
 
 /* ===== Card Actions ===== */
-.card-actions-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.card-btn-row {
+  display: flex;
   gap: 12px;
   padding: 0 16px;
   margin-bottom: 12px;
 }
 
-.card-action-btn {
+.card-btn {
+  flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 16px 8px;
+  padding: 14px 12px;
   background: var(--bg-white);
   border: none;
   border-radius: var(--radius-md);
   cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Montserrat', sans-serif;
 }
 
-.ca-icon {
-  font-size: 22px;
+.card-btn-icon {
+  font-size: 18px;
 }
 
-.ca-text {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text-secondary);
+/* ===== Activity ===== */
+.card-activity-list {
+  padding-bottom: 24px;
 }
 
 /* ===== Card Info ===== */
@@ -203,4 +205,130 @@
 
 .status-active {
   color: #16A34A;
+}
+
+/* ===== Card Detail Sheet ===== */
+.detail-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.detail-label {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+
+.detail-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+}
+
+.detail-copy {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.copy-icon {
+  font-size: 18px;
+  color: var(--text-light);
+  pointer-events: auto;
+  transition: color 0.15s;
+}
+
+.copy-icon.copied {
+  color: #16A34A;
+}
+
+/* ===== Manage Card Sheet ===== */
+.manage-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.manage-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.manage-row:last-child {
+  border-bottom: none;
+}
+
+.manage-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.manage-row-danger .manage-label {
+  color: #EB0028;
+}
+
+.manage-arrow {
+  font-size: 18px;
+  color: var(--text-light);
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+/* ===== Toggle Switch ===== */
+.toggle-switch {
+  width: 48px;
+  height: 28px;
+  background: #D1D5DB;
+  border-radius: 14px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.25s;
+  flex-shrink: 0;
+}
+
+.toggle-switch.toggle-on {
+  background: #EB0028;
+}
+
+.toggle-thumb {
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.25s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-switch.toggle-on .toggle-thumb {
+  transform: translateX(20px);
 }
