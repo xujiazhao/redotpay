@@ -37,10 +37,8 @@ function Layout({ children }) {
 
   useEffect(() => {
     setFadeIn(false)
-    const t = requestAnimationFrame(() => {
-      requestAnimationFrame(() => setFadeIn(true))
-    })
-    return () => cancelAnimationFrame(t)
+    const t = setTimeout(() => setFadeIn(true), 30)
+    return () => clearTimeout(t)
   }, [location.pathname])
 
   const setQrTarget = useCallback((el) => {

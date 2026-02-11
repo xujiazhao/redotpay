@@ -46,11 +46,9 @@
   display: block;
 }
 
-.splash-brand-text {
-  font-size: 28px;
-  font-weight: 800;
-  color: #1A1A2E;
-  letter-spacing: -0.5px;
+.splash-brand-logo {
+  height: 28px;
+  width: auto;
 }
 
 .splash-tagline {
@@ -94,7 +92,7 @@
 /* ===== Phase: reveal â€” red fades out, show home ===== */
 .splash.reveal {
   opacity: 0;
-  transition: opacity 0.35s ease-in;
+  transition: opacity 0.3s ease-in;
 }
 
 .splash.reveal .splash-dot {

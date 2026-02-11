@@ -174,6 +174,7 @@ function Pay({ onClose, qrTargetRef, hideQrLogo, ringsVisible }) {
           <PiCaretRight className="pay-action-caret" />
         </div>
       </div>
+      <div className="pay-tagline">Where Crypto Meets Real Life</div>
     </div>
   )
 }

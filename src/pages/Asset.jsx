@@ -1,4 +1,4 @@
-import { PiCurrencyDollarSimple, PiCurrencyBtc, PiCurrencyEth, PiPlus, PiTrendUp } from 'react-icons/pi'
+import { PiCurrencyDollarSimple, PiCurrencyBtc, PiCurrencyEth, PiPlus, PiTrendUp, PiGearSix, PiArrowDown, PiArrowUp, PiArrowsLeftRight, PiShoppingCart, PiFilmSlate } from 'react-icons/pi'
 import '../styles/Asset.css'
 
 const assets = [
@@ -10,10 +10,12 @@ const assets = [
 ]
 
 // Simulated daily portfolio values for the last 30 days (in USD)
+// 4 turns: rise(8) → dip(4) → long rise(12) → slight dip(6) → end
 const chartData = [
-  32100, 33200, 32400, 31500, 32800, 34100, 33200, 32600, 34500, 35800,
-  34200, 33100, 34800, 36200, 35400, 34100, 35900, 37100, 35800, 34600,
-  36300, 37800, 36400, 35200, 37100, 38500, 37200, 36800, 38400, 37949.65
+  32100, 32500, 33100, 33800, 34600, 35200, 35900, 36400,
+  36100, 35500, 35000, 34600,
+  34800, 35100, 35500, 35700, 36100, 36400, 36900, 37200, 37500, 37900, 38300, 38700,
+  38500, 38200, 37900, 37800, 37900, 37949.65
 ]
 
 const totalValue = '37,949.65'
@@ -41,19 +43,21 @@ function buildSmoothPath(data, width, height, padding = 0) {
     const cp2y = p2.y - (p3.y - p1.y) / 6
     d += ` C${cp1x.toFixed(1)},${cp1y.toFixed(1)} ${cp2x.toFixed(1)},${cp2y.toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`
   }
-  return d
+  const last = pts[pts.length - 1]
+  return { d, lastX: last.x, lastY: last.y }
 }
 
 function Asset() {
-  const chartW = 358, chartH = 120
-  const linePath = buildSmoothPath(chartData, chartW, chartH, 8)
+  const chartW = 358, chartH = 120, drawW = chartW - 16
+  const { d: linePath, lastX, lastY } = buildSmoothPath(chartData, drawW, chartH, 8)
   // Area: same path + close to bottom-right then bottom-left
-  const areaPath = `${linePath} L${chartW},${chartH} L0,${chartH} Z`
+  const areaPath = `${linePath} L${drawW},${chartH} L0,${chartH} Z`
 
   return (
     <div className="asset-page">
       <div className="asset-header">
         <h2 className="asset-title">Asset</h2>
+        <PiGearSix className="asset-header-settings" />
       </div>
 
       {/* Portfolio Chart */}
@@ -61,10 +65,9 @@ function Asset() {
         <div className="asset-portfolio-label">Est. Total Value</div>
         <div className="asset-portfolio-value">${totalValue}</div>
         <div className="asset-portfolio-change">
-          <PiTrendUp className="asset-change-icon" />
           <span>{changeValue}</span>
           <span className="asset-change-pct">({changePercent})</span>
-          <span className="asset-change-period">30d</span>
+          <span className="asset-change-period">30D Change</span>
         </div>
         <div className="asset-chart">
           <svg viewBox={`0 0 ${chartW} ${chartH}`} width="100%" height={chartH} preserveAspectRatio="none">
@@ -76,8 +79,17 @@ function Asset() {
             </defs>
             <path d={areaPath} fill="url(#chartGrad)" />
             <path d={linePath} fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx={lastX} cy={lastY} r="4" fill="#16A34A" />
+            <circle cx={lastX} cy={lastY} r="7" fill="#16A34A" opacity="0.2" />
           </svg>
         </div>
+      </div>
+
+      {/* Quick Actions */}
+      <div className="asset-actions">
+        <button className="asset-action-btn"><PiArrowDown /> Deposit</button>
+        <button className="asset-action-btn"><PiArrowUp /> Withdraw</button>
+        <button className="asset-action-btn"><PiArrowsLeftRight /> Swap</button>
       </div>
 
       <div className="asset-grid">
@@ -92,10 +104,70 @@ function Asset() {
           </div>
         ))}
         <div className="asset-card asset-card-add">
-          <div className="asset-card-icon">
-            <PiPlus />
+          <PiPlus />
+        </div>
+      </div>
+
+      {/* Portfolio Composition */}
+      <div className="asset-composition">
+        <div className="section-title">Portfolio Composition</div>
+        <div className="asset-bubbles">
+          <svg viewBox="0 0 320 210" width="100%" height="210">
+            {/* Crypto - largest, top-left */}
+            <circle cx="90" cy="78" r="68" fill="#1A1A1A" />
+            <text x="90" y="66" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="700">Crypto</text>
+            <text x="90" y="84" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="500">$16,959</text>
+            <text x="90" y="98" textAnchor="middle" fill="#fff" fontSize="10" opacity="0.6">44.7%</text>
+            {/* Stablecoins - medium, top-right */}
+            <circle cx="230" cy="68" r="55" fill="#333" />
+            <text x="230" y="58" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="700">Stablecoin</text>
+            <text x="230" y="74" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="500">$8,410</text>
+            <text x="230" y="88" textAnchor="middle" fill="#fff" fontSize="10" opacity="0.6">22.2%</text>
+            {/* Cash - smaller, bottom-center */}
+            <circle cx="175" cy="165" r="40" fill="#555" />
+            <text x="175" y="157" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="700">Cash</text>
+            <text x="175" y="173" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="500">$12,580</text>
+            <text x="175" y="186" textAnchor="middle" fill="#fff" fontSize="10" opacity="0.6">33.1%</text>
+          </svg>
+        </div>
+      </div>
+
+      {/* Recent Changes */}
+      <div className="asset-recent">
+        <div className="section-title">Recent Changes</div>
+        <div className="asset-recent-list">
+          <div className="transaction-item card">
+            <div className="tx-icon"><PiArrowDown /></div>
+            <div className="tx-info">
+              <div className="tx-name">USDT Deposit</div>
+              <div className="tx-time">Today 10:15</div>
+            </div>
+            <div className="tx-amount positive">+500.00 USDT</div>
           </div>
-          <div className="asset-card-symbol">Add Asset</div>
+          <div className="transaction-item card">
+            <div className="tx-icon"><PiArrowsLeftRight /></div>
+            <div className="tx-info">
+              <div className="tx-name">ETH → USDC Swap</div>
+              <div className="tx-time">Yesterday 16:45</div>
+            </div>
+            <div className="tx-amount">0.12 ETH</div>
+          </div>
+          <div className="transaction-item card">
+            <div className="tx-icon"><PiArrowUp /></div>
+            <div className="tx-info">
+              <div className="tx-name">BTC Withdrawal</div>
+              <div className="tx-time">Feb 8, 09:30</div>
+            </div>
+            <div className="tx-amount">-0.025 BTC</div>
+          </div>
+          <div className="transaction-item card">
+            <div className="tx-icon"><PiArrowDown /></div>
+            <div className="tx-info">
+              <div className="tx-name">USD Deposit</div>
+              <div className="tx-time">Feb 7, 14:20</div>
+            </div>
+            <div className="tx-amount positive">+2,000.00 USD</div>
+          </div>
         </div>
       </div>
     </div>

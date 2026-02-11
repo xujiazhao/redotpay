@@ -6,14 +6,14 @@ function Splash({ onFinish }) {
 
   useEffect(() => {
     // Phase 1 (0ms): logo + text visible on white bg
-    // Phase 2 (700ms): logo & text fade out
-    const t1 = setTimeout(() => setPhase('fadelogo'), 700)
-    // Phase 3 (1000ms): red dot expands from center
-    const t2 = setTimeout(() => setPhase('expand'), 1000)
-    // Phase 4 (1450ms): red screen fades out, reveal home
-    const t3 = setTimeout(() => setPhase('reveal'), 1450)
-    // Phase 5 (1800ms): unmount
-    const t4 = setTimeout(() => onFinish(), 1800)
+    // Phase 2 (1700ms): logo & text fade out
+    const t1 = setTimeout(() => setPhase('fadelogo'), 1200)
+    // Phase 3 (2000ms): red dot expands from center
+    const t2 = setTimeout(() => setPhase('expand'), 1500)
+    // Phase 4 (2450ms): red screen fades out, reveal home
+    const t3 = setTimeout(() => setPhase('reveal'), 1950)
+    // Phase 5 (2800ms): unmount
+    const t4 = setTimeout(() => onFinish(), 2300)
 
     return () => {
       clearTimeout(t1)
@@ -30,8 +30,8 @@ function Splash({ onFinish }) {
         <div className="splash-logo">
           <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="RedotPay" />
         </div>
-        <div className="splash-brand-text">RedotPay</div>
-        <div className="splash-tagline">Web3 Payment, Simplified</div>
+        <img src={`${import.meta.env.BASE_URL}logo%20titile.svg`} alt="RedotPay" className="splash-brand-logo" />
+        <div className="splash-tagline">Where Crypto Meets Real Life</div>
       </div>
 
       {/* Red dot that expands to fill screen */}

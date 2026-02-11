@@ -137,11 +137,11 @@ function Home() {
       <div className="section-title">Learn</div>
       <div className="learn-scroll" ref={learnScrollRef}>
         <div className="learn-card">
-          <img src={`${import.meta.env.BASE_URL}learn-identity.svg`} alt="" className="learn-card-img" />
+          <img src={`${import.meta.env.BASE_URL}1.png`} alt="" className="learn-card-img" />
           <div className="learn-card-text">How to complete account identity authentication</div>
         </div>
         <div className="learn-card">
-          <img src={`${import.meta.env.BASE_URL}learn-payout.svg`} alt="" className="learn-card-img" />
+          <img src={`${import.meta.env.BASE_URL}2.png`} alt="" className="learn-card-img" />
           <div className="learn-card-text">Global payout with RedotPay</div>
         </div>
       </div>
@@ -150,28 +150,28 @@ function Home() {
       <div className="section-title">Explore</div>
       <div className="explore-scroll" ref={exploreScrollRef}>
         <div className="explore-card">
-          <img src={`${import.meta.env.BASE_URL}explore-solana.svg`} alt="" className="explore-card-img" />
+          <img src={`${import.meta.env.BASE_URL}3.png`} alt="" className="explore-card-img" />
           <div className="explore-card-body">
             <div className="explore-card-title">Solana Card</div>
             <div className="explore-card-subtitle">Earn up to 3% cashback</div>
           </div>
         </div>
         <div className="explore-card">
-          <img src={`${import.meta.env.BASE_URL}explore-invite.svg`} alt="" className="explore-card-img" />
+          <img src={`${import.meta.env.BASE_URL}4.png`} alt="" className="explore-card-img" />
           <div className="explore-card-body">
             <div className="explore-card-title">Invite Friends</div>
             <div className="explore-card-subtitle">Earn up to 40% commission!</div>
           </div>
         </div>
         <div className="explore-card">
-          <img src={`${import.meta.env.BASE_URL}explore-defi.svg`} alt="" className="explore-card-img" />
+          <img src={`${import.meta.env.BASE_URL}5.png`} alt="" className="explore-card-img" />
           <div className="explore-card-body">
             <div className="explore-card-title">DeFi Staking</div>
             <div className="explore-card-subtitle">Earn up to 12% APY on your assets</div>
           </div>
         </div>
         <div className="explore-card">
-          <img src={`${import.meta.env.BASE_URL}explore-swap.svg`} alt="" className="explore-card-img" />
+          <img src={`${import.meta.env.BASE_URL}6.png`} alt="" className="explore-card-img" />
           <div className="explore-card-body">
             <div className="explore-card-title">Cross-Chain Swap</div>
             <div className="explore-card-subtitle">Swap tokens across networks instantly</div>

@@ -275,3 +275,12 @@
   color: #9CA3AF;
   flex-shrink: 0;
 }
+
+.pay-tagline {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 20px;
+  letter-spacing: 0.3px;
+}
